@@ -1,8 +1,10 @@
 import 'package:be_better_u/screen/UserData.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
+import 'package:be_better_u/screen/FoodAdvice.dart'; // Importa la pagina FoodAdvice
 import 'package:firebase_auth/firebase_auth.dart'; // Importa Firebase Auth
 import 'package:firebase_core/firebase_core.dart'; // Importa Firebase Core per l'inizializzazione
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 // HomePage è uno StatefulWidget perché lo sfondo cambierà dinamicamente.
 class HomePage extends StatefulWidget {
@@ -17,9 +19,10 @@ class _HomePageState extends State<HomePage> {
   // Ho usato placeholder images per la dimostrazione.
   final List<String> _backgroundImages = [
     'https://images.unsplash.com/photo-1434596922112-19c563067271',
-    'https://images.unsplash.com/photo-1517438322307-e67111335449',
-    'https://images.unsplash.com/photo-1517838277536-f5f99be501cd',
-    'https://images.unsplash.com/photo-1519505907962-0a6cb0167c73',
+    'https://images.unsplash.com/photo-1709315872247-644b7ff5ed10',
+    'https://images.unsplash.com/photo-1603734220970-25a0b335ca01',
+    'https://images.unsplash.com/photo-1661548352777-c2ff8643a8d1',
+    'https://images.unsplash.com/photo-1554454019-8a165b8a3bd8'
   ];
 
   late String _currentBackgroundImage;
@@ -30,21 +33,31 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     // Seleziona un'immagine di sfondo casuale all'inizializzazione dello stato.
     _currentBackgroundImage = _backgroundImages[Random().nextInt(_backgroundImages.length)];
-     _loadUserData();
+     _updatUserInfo(); // Carica le informazioni dell'utente all'inizio
   }
 
-  void _loadUserData() {
+  void _updatUserInfo() async {
+    // Ricarica i dati dell'utente quando necessario, ad esempio dopo un login o un logout.
     final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      setState(() {
-        // Preferisce il displayName se disponibile, altrimenti usa l'email.
-        // Se entrambi sono nulli, rimane "Utente".
-        _userDisplayName = user.displayName ?? user.email ?? 'Utente';
-      });
+    if (user == null) {
+      return; // Se l'utente non è loggato, non fare nulla.
     } else {
-      setState(() {
-        _userDisplayName = 'Utente'; // Reset se l'utente non è loggato
-      });
+        final docSnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+      if (docSnapshot.exists) {
+        setState(() {
+          // Usa il firstname e lastname se disponibili, altrimenti usa l'email.
+          // Se entrambi sono nulli, rimane "Utente".
+          final data = docSnapshot.data();
+          if (data != null && data['firstName'] != null && data['lastName'] != null) {
+            _userDisplayName = '${data['firstName']} ${data['lastName']}';
+          } else {
+            _userDisplayName = user.email ?? 'Utente';
+          }
+        });
+      }
     }
   }
 
@@ -54,32 +67,29 @@ class _HomePageState extends State<HomePage> {
       // Estendi il corpo per occupare l'intera altezza, inclusa l'area sotto l'AppBar.
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: const Text(
-          'APTrainer',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+        title: Padding(
+          padding: EdgeInsets.only(
+              top: MediaQuery.of(context).padding.top / 2), // Adatta il padding
+          child: const Text(
+            'APTrainer',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        backgroundColor: Colors.transparent, // Rende la barra trasparente
-        elevation: 0, // Nessuna ombra
-        iconTheme: const IconThemeData(color: Colors.white), // Colore icona del Drawer
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
       ),
-      // Il Drawer per il menu laterale.
       drawer: Drawer(
-        backgroundColor: const Color(0xFF1a2b3c), // Colore di sfondo scuro come il sito di riferimento
+        backgroundColor: const Color.fromARGB(255, 0, 2, 4), // Colore di sfondo scuro come il sito di riferimento
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            // Header del Drawer con un'immagine o un logo.
             DrawerHeader(
               decoration: const BoxDecoration(
-                color: Color(0xFF2c3e50), // Colore più scuro per l'header
-                // Puoi aggiungere un'immagine qui se desideri:
-                // image: DecorationImage(
-                //   image: NetworkImage('URL_DELLA_TUA_IMMAGINE_QUI'),
-                //   fit: BoxFit.cover,
-                // ),
+                color: Color.fromARGB(255, 0, 0, 0), // Colore più scuro per l'header
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,7 +145,10 @@ class _HomePageState extends State<HomePage> {
               text: 'Consigli alimentari',
               onTap: () {
                 Navigator.pop(context);
-                // TODO: Naviga alla pagina "Consigli alimentari"
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FoodAdvice()),
+                );
               },
             ),
             _buildDrawerItem(
@@ -153,9 +166,6 @@ class _HomePageState extends State<HomePage> {
               onTap: () async {
                 Navigator.pop(context); // Chiude il drawer
                 await FirebaseAuth.instance.signOut(); // Esegue il logout
-                // Non c'è bisogno di setState qui, _loadUserData verrà chiamato
-                // automaticamente quando il AuthWrapper ricostruirà HomePage o mostrerà LoginPage.
-                // Dopo il logout, l'StreamBuilder in MyApp rileverà l'utente nullo e reindirizzerà.
               },
             ),
           ],
@@ -263,7 +273,7 @@ class _HomePageState extends State<HomePage> {
     required GestureTapCallback onTap,
   }) {
     return ListTile(
-      leading: Icon(icon, color: Colors.white70),
+      leading: Icon(icon, color: Colors.white),
       title: Text(
         text,
         style: const TextStyle(
@@ -273,7 +283,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       onTap: onTap,
-      hoverColor: Colors.white12, // Colore al passaggio del mouse/tocco
+      hoverColor: const Color.fromARGB(255, 255, 255, 255), // Colore al passaggio del mouse/tocco
     );
   }
 }

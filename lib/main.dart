@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           primary: const Color.fromARGB(255, 170, 46, 39), // Colore primario per i widget
           onPrimary: Colors.black, // Colore del testo/icone sui widget primari
-          secondary: const Color.fromARGB(125, 170, 46, 39), // Colore secondario, simile all'accento
+          secondary: const Color.fromARGB(124, 236, 15, 3), // Colore secondario, simile all'accento
           onSecondary: Colors.black,
           // ignore: duplicate_ignore
           // ignore: deprecated_member_use
@@ -114,7 +114,7 @@ class MyApp extends StatelessWidget {
 
         // Tema per le icone
         iconTheme: const IconThemeData(
-          color: Color.fromARGB(255, 250, 248, 248), // Colore accento per le icone
+          color: Colors.white, // Colore accento per le icone
           size: 24,
         ),
       ),

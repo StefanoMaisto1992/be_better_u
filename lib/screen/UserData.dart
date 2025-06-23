@@ -260,14 +260,14 @@ class UserDataPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        backgroundColor: const Color(0xFF1a2b3c), // Stesso colore del Drawer
+        backgroundColor: const Color.fromARGB(255, 0, 0, 0), // Stesso colore del Drawer
         foregroundColor: Colors.white, // Colore dell'icona indietro
       ),
       body: Container(
         // Sfondo degradè per la pagina, simile a quello della LoginPage o del tema
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF1a2b3c), Color(0xFF2c3e50)],
+            colors: [Color.fromARGB(255, 79, 79, 79), Color.fromARGB(255, 0, 3, 6)],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
