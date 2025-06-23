@@ -1,0 +1,446 @@
+{
+    "ricette_fitness": {
+      "colazione": [
+        {
+          "nome": "Oatmeal Proteico con Frutti di Bosco",
+          "descrizione": "Una colazione ricca di fibre e proteine, perfetta per iniziare la giornata con energia.",
+          "ingredienti": [
+            "50g fiocchi d'avena",
+            "200ml acqua o latte vegetale",
+            "30g proteine in polvere (vaniglia o neutre)",
+            "100g frutti di bosco misti",
+            "1 cucchiaino semi di chia",
+            "Dolcificante a piacere (opzionale)"
+          ],
+          "istruzioni": [
+            "In un pentolino, porta a ebollizione i fiocchi d'avena con acqua/latte.",
+            "Riduci la fiamma e cuoci fino a quando l'avena non ha assorbito il liquido, mescolando.",
+            "Togli dal fuoco, lascia intiepidire leggermente e incorpora le proteine in polvere mescolando bene per evitare grumi.",
+            "Aggiungi i frutti di bosco e i semi di chia. Dolcifica se desiderato."
+          ]
+        },
+        {
+          "nome": "Frullato Verde Proteico",
+          "descrizione": "Un frullato nutriente e rinfrescante, ideale per una colazione veloce o post-allenamento.",
+          "ingredienti": [
+            "1 banana matura",
+            "1 manciata di spinaci freschi",
+            "200ml latte di mandorla non zuccherato",
+            "30g proteine in polvere (vaniglia)",
+            "1 cucchiaio burro d'arachidi naturale",
+            "Ghiaccio (opzionale)"
+          ],
+          "istruzioni": [
+            "Metti tutti gli ingredienti in un frullatore.",
+            "Frulla fino ad ottenere una consistenza liscia e omogenea.",
+            "Servi immediatamente."
+          ]
+        },
+        {
+          "nome": "Toast Integrale con Avocado e Uovo",
+          "descrizione": "Una colazione salata e completa, ricca di grassi sani e proteine.",
+          "ingredienti": [
+            "2 fette di pane integrale tostato",
+            "1/2 avocado maturo",
+            "1 uovo in camicia o strapazzato",
+            "Sale, pepe, e fiocchi di peperoncino (opzionale)"
+          ],
+          "istruzioni": [
+            "Tosta il pane integrale.",
+            "Schiaccia l'avocado su ciascuna fetta di pane.",
+            "Prepara l'uovo come preferisci (in camicia o strapazzato) e posizionalo sull'avocado.",
+            "Condisci con sale, pepe e fiocchi di peperoncino se ti piace un tocco piccante."
+          ]
+        },
+        {
+          "nome": "Pancake Proteici ai Mirtilli",
+          "descrizione": "Pancake soffici e ricchi di proteine, perfetti per una colazione golosa ma salutare.",
+          "ingredienti": [
+            "60g farina d'avena",
+            "1 misurino proteine in polvere (vaniglia/neutre)",
+            "1 uovo",
+            "100ml albumi",
+            "50ml latte (vaccino o vegetale)",
+            "1 cucchiaino lievito per dolci",
+            "50g mirtilli freschi",
+            "Sciroppo d'acero/agave (opzionale)"
+          ],
+          "istruzioni": [
+            "In una ciotola, mescola farina d'avena, proteine in polvere e lievito.",
+            "In un'altra ciotola, sbatti l'uovo, gli albumi e il latte.",
+            "Unisci gli ingredienti liquidi a quelli secchi, mescolando fino ad ottenere una pastella liscia.",
+            "Incorpora delicatamente i mirtilli.",
+            "Scalda una padella antiaderente e cuoci i pancake per 2-3 minuti per lato, fino a doratura.",
+            "Servi con sciroppo d'acero/agave se desiderato."
+          ]
+        },
+        {
+          "nome": "Budino di Chia al Cacao e Banana",
+          "descrizione": "Un budino cremoso e nutriente, facile da preparare la sera prima.",
+          "ingredienti": [
+            "3 cucchiai semi di chia",
+            "250ml latte di mandorla non zuccherato",
+            "1 cucchiaio cacao amaro in polvere",
+            "1/2 banana schiacciata",
+            "Dolcificante a piacere (opzionale)"
+          ],
+          "istruzioni": [
+            "In un barattolo o ciotola, mescola i semi di chia, latte di mandorla e cacao amaro.",
+            "Aggiungi la banana schiacciata e il dolcificante (se usi). Mescola bene.",
+            "Copri e lascia riposare in frigorifero per almeno 4 ore o preferibilmente tutta la notte.",
+            "Mescola bene prima di servire."
+          ]
+        },
+        {
+          "nome": "Omelette con Verdure e Formaggio Light",
+          "descrizione": "Un'omelette salata e personalizzabile, ricca di proteine e micronutrienti.",
+          "ingredienti": [
+            "2 uova intere",
+            "2 albumi",
+            "50g spinaci freschi",
+            "30g funghi affettati",
+            "30g formaggio light grattugiato",
+            "Olio spray o un filo d'olio d'oliva",
+            "Sale e pepe q.b."
+          ],
+          "istruzioni": [
+            "In una ciotola, sbatti le uova e gli albumi con sale e pepe.",
+            "Scalda una padella antiaderente con olio spray o un filo d'olio.",
+            "Aggiungi spinaci e funghi e cuocili finché non appassiscono.",
+            "Versa le uova sbattute nella padella e distribuisci uniformemente le verdure e il formaggio.",
+            "Cuoci a fuoco medio-basso fino a quando l'omelette non è rappresa. Piega a metà e servi."
+          ]
+        }
+      ],
+      "pranzo": [
+        {
+          "nome": "Insalata di Quinoa e Pollo Grigliato",
+          "descrizione": "Un pranzo completo e leggero, ricco di proteine e carboidrati complessi.",
+          "ingredienti": [
+            "150g petto di pollo",
+            "80g quinoa cruda",
+            "1/2 cetriolo",
+            "1/2 peperone rosso",
+            "10 pomodorini",
+            "Prezzemolo fresco",
+            "Succo di 1/2 limone",
+            "1 cucchiaio olio d'oliva extra vergine",
+            "Sale e pepe q.b."
+          ],
+          "istruzioni": [
+            "Cuoci la quinoa seguendo le istruzioni sulla confezione. Lasciala raffreddare.",
+            "Griglia il petto di pollo e taglialo a cubetti.",
+            "Trita il cetriolo, il peperone e i pomodorini.",
+            "In una ciotola grande, unisci la quinoa, il pollo, le verdure tritate e il prezzemolo.",
+            "Condisci con succo di limone, olio d'oliva, sale e pepe. Mescola bene."
+          ]
+        },
+        {
+          "nome": "Wrap di Tonno e Verdure",
+          "descrizione": "Un'opzione pratica e gustosa per un pranzo veloce e salutare.",
+          "ingredienti": [
+            "1 lattina di tonno al naturale (sgocciolato)",
+            "1 tortilla integrale grande",
+            "2 foglie di lattuga",
+            "1/4 di carota grattugiata",
+            "1 cucchiaio yogurt greco magro",
+            "Pizzico di paprika dolce",
+            "Sale e pepe q.b."
+          ],
+          "istruzioni": [
+            "In una ciotola, mescola il tonno con lo yogurt greco, paprika, sale e pepe.",
+            "Scalda leggermente la tortilla.",
+            "Spalma il composto di tonno sulla tortilla, aggiungi la lattuga e la carota grattugiata.",
+            "Arrotola la tortilla saldamente e tagliala a metà se desideri."
+          ]
+        },
+        {
+          "nome": "Buddha Bowl Vegana con Tempeh",
+          "descrizione": "Un pranzo vegano completo e bilanciato, ricco di proteine vegetali e fibre.",
+          "ingredienti": [
+            "100g tempeh affettato",
+            "60g riso integrale cotto",
+            "1/2 broccolo (cimette)",
+            "1 carota media (julienne)",
+            "1/4 tazza edamame sgusciato",
+            "Salsa tahini-limone (tahini, succo di limone, acqua, aglio in polvere)",
+            "Olio d'oliva",
+            "Salsa di soia",
+            "Zenzero fresco grattugiato (opzionale)"
+          ],
+          "istruzioni": [
+            "Cuoci il riso integrale secondo le istruzioni.",
+            "Vaporizza le cimette di broccolo fino a quando sono tenere ma croccanti.",
+            "In una padella, salta il tempeh con un po' d'olio d'oliva e salsa di soia fino a doratura.",
+            "Prepara la salsa mescolando tahini, succo di limone, un po' d'acqua per raggiungere la consistenza desiderata e aglio in polvere.",
+            "Assembla la bowl con riso, tempeh, broccolo, carota e edamame.",
+            "Condisci abbondantemente con la salsa tahini-limone."
+          ]
+        },
+        {
+          "nome": "Zuppa di Lenticchie Rosse e Verdure",
+          "descrizione": "Una zuppa calda e confortante, ricca di proteine vegetali e fibre, perfetta per un pranzo nutriente.",
+          "ingredienti": [
+            "1 tazza lenticchie rosse",
+            "1 cipolla piccola tritata",
+            "2 carote a cubetti",
+            "2 gambi di sedano a cubetti",
+            "1 pomodoro grande a cubetti",
+            "1 litro brodo vegetale",
+            "1 cucchiaino cumino",
+            "1/2 cucchiaino curcuma",
+            "Olio d'oliva",
+            "Sale e pepe q.b."
+          ],
+          "istruzioni": [
+            "Sciacqua le lenticchie rosse.",
+            "In una pentola grande, scalda l'olio e soffriggi cipolla, carote e sedano fino a quando non sono teneri.",
+            "Aggiungi il pomodoro, le lenticchie, il brodo vegetale, il cumino e la curcuma.",
+            "Porta a ebollizione, poi riduci la fiamma e lascia sobbollire per circa 20-25 minuti, o fino a quando le lenticchie sono tenere.",
+            "Regola di sale e pepe. Servi calda, magari con una spruzzata di prezzemolo fresco."
+          ]
+        },
+        {
+          "nome": "Insalata di Ceci e Verdure Croccanti",
+          "descrizione": "Un'insalata fresca e proteica, ideale per un pranzo leggero e vegetariano.",
+          "ingredienti": [
+            "1 lattina ceci (sciacquati e scolati)",
+            "1/2 peperone giallo a cubetti",
+            "1/4 cipolla rossa tritata finemente",
+            "1/2 cetriolo a cubetti",
+            "Prezzemolo fresco tritato",
+            "Succo di 1 limone",
+            "2 cucchiai olio d'oliva extra vergine",
+            "Sale e pepe q.b."
+          ],
+          "istruzioni": [
+            "In una ciotola grande, unisci i ceci, il peperone, la cipolla, il cetriolo e il prezzemolo.",
+            "Condisci con succo di limone, olio d'oliva, sale e pepe.",
+            "Mescola bene e lascia riposare per almeno 10 minuti per far insaporire i sapori."
+          ]
+        },
+        {
+          "nome": "Pollo e Verdure al Vapore con Salsa Leggera allo Yogurt",
+          "descrizione": "Un pranzo delicato e nutriente, ricco di proteine e fibre.",
+          "ingredienti": [
+            "150g petto di pollo",
+            "1 carota",
+            "1 zucchina",
+            "100g broccoli",
+            "Per la salsa: 100g yogurt greco magro, succo di 1/4 limone, aneto fresco tritato, sale e pepe."
+          ],
+          "istruzioni": [
+            "Taglia il pollo e le verdure a pezzi.",
+            "Cuoci il pollo e le verdure al vapore fino a quando sono teneri.",
+            "Nel frattempo, prepara la salsa mescolando lo yogurt greco con succo di limone, aneto, sale e pepe.",
+            "Servi il pollo e le verdure al vapore con la salsa a parte."
+          ]
+        }
+      ],
+      "cene": [
+        {
+          "nome": "Salmone al Forno con Asparagi",
+          "descrizione": "Una cena leggera e ricca di omega-3, perfetta per il recupero muscolare.",
+          "ingredienti": [
+            "150g filetto di salmone",
+            "1 mazzetto di asparagi",
+            "1 cucchiaio olio d'oliva extra vergine",
+            "Succo di 1/2 limone",
+            "Aglio in polvere",
+            "Sale e pepe q.b."
+          ],
+          "istruzioni": [
+            "Preriscalda il forno a 180°C.",
+            "Disponi il salmone e gli asparagi su una teglia rivestita di carta forno.",
+            "Condisci con olio d'oliva, succo di limone, aglio in polvere, sale e pepe.",
+            "Cuoci in forno per 15-20 minuti, o fino a quando il salmone è cotto e gli asparagi sono teneri ma croccanti."
+          ]
+        },
+        {
+          "nome": "Petto di Pollo al Curry con Verdure",
+          "descrizione": "Una cena saporita e nutriente, con una buona dose di proteine e verdure.",
+          "ingredienti": [
+            "150g petto di pollo",
+            "1/2 cipolla",
+            "1/2 zucchina",
+            "1/2 peperone giallo",
+            "100ml latte di cocco light",
+            "1 cucchiaio pasta di curry rosso (o curry in polvere)",
+            "Olio di cocco (o EVO)",
+            "Sale e pepe q.b."
+          ],
+          "istruzioni": [
+            "Taglia il petto di pollo a cubetti e le verdure a julienne.",
+            "In una padella, scalda un po' di olio e soffriggi la cipolla tritata.",
+            "Aggiungi il pollo e fallo rosolare.",
+            "Aggiungi le altre verdure e cuoci per qualche minuto.",
+            "Incorpora la pasta di curry (o il curry in polvere) e mescola bene.",
+            "Versa il latte di cocco, porta a ebollizione e poi riduci la fiamma.",
+            "Lascia sobbollire fino a quando il pollo è cotto e il sugo si è addensato leggermente. Servi caldo."
+          ]
+        },
+        {
+          "nome": "Frittata di Spinaci e Feta",
+          "descrizione": "Una cena veloce e ricca di proteine, ideale per un pasto leggero ma saziante.",
+          "ingredienti": [
+            "3 uova intere",
+            "100g spinaci freschi",
+            "50g feta sbriciolata",
+            "1/4 cipolla rossa affettata sottile",
+            "Olio d'oliva",
+            "Sale e pepe q.b."
+          ],
+          "istruzioni": [
+            "In una padella antiaderente, scalda un filo d'olio e soffriggi la cipolla rossa fino a renderla morbida.",
+            "Aggiungi gli spinaci e cuoci fino a quando non appassiscono.",
+            "In una ciotola, sbatti le uova con sale e pepe.",
+            "Versa le uova nella padella sopra gli spinaci e la cipolla.",
+            "Distribuisci la feta sbriciolata sulla superficie.",
+            "Cuoci a fuoco medio-basso fino a quando la frittata non è quasi rappresa. Puoi finire la cottura sotto il grill del forno per dorare la superficie.",
+            "Servi calda o a temperatura ambiente."
+          ]
+        },
+        {
+          "nome": "Polpette di Tacchino e Zucchine",
+          "descrizione": "Un'alternativa sana alle polpette tradizionali, leggere e saporite.",
+          "ingredienti": [
+            "250g macinato di tacchino",
+            "1 zucchina grattugiata (e strizzata bene)",
+            "1 uovo",
+            "30g pangrattato integrale",
+            "Prezzemolo tritato",
+            "Sale, pepe, aglio in polvere q.b."
+          ],
+          "istruzioni": [
+            "In una ciotola, unisci il macinato di tacchino, la zucchina grattugiata e strizzata, l'uovo, il pangrattato, il prezzemolo, sale, pepe e aglio in polvere.",
+            "Mescola bene fino a ottenere un composto omogeneo.",
+            "Forma delle polpette di medie dimensioni.",
+            "Puoi cuocerle in padella con un filo d'olio, al forno a 180°C per 20-25 minuti, o in friggitrice ad aria.",
+            "Servi con un contorno di verdure a piacere."
+          ]
+        },
+        {
+          "nome": "Filetto di Merluzzo al Cartoccio con Patate e Pomodorini",
+          "descrizione": "Una cena leggera e ricca di proteine, con un metodo di cottura che preserva i sapori.",
+          "ingredienti": [
+            "150g filetto di merluzzo",
+            "1 patata piccola a fettine sottili",
+            "10 pomodorini a metà",
+            "Prezzemolo fresco",
+            "Succo di 1/4 limone",
+            "1 cucchiaio olio d'oliva extra vergine",
+            "Sale e pepe q.b."
+          ],
+          "istruzioni": [
+            "Preriscalda il forno a 180°C.",
+            "Prepara un foglio di carta forno abbastanza grande da formare un cartoccio.",
+            "Disponi al centro le fettine di patata, poi il filetto di merluzzo e infine i pomodorini.",
+            "Condisci con prezzemolo, succo di limone, olio d'oliva, sale e pepe.",
+            "Chiudi il cartoccio sigillando bene i bordi.",
+            "Cuoci in forno per circa 20-25 minuti, o fino a quando il pesce è cotto e le patate sono tenere."
+          ]
+        },
+        {
+          "nome": "Curry di Ceci e Spinaci",
+          "descrizione": "Un curry vegetariano saporito e nutriente, ideale per una cena ricca di fibre.",
+          "ingredienti": [
+            "1 lattina ceci (sciacquati e scolati)",
+            "200g spinaci freschi",
+            "1 cipolla piccola tritata",
+            "1 spicchio d'aglio tritato",
+            "1 cucchiaio pasta di curry verde (o in polvere)",
+            "200ml latte di cocco light",
+            "Olio d'oliva",
+            "Sale q.b.",
+            "Riso basmati (per accompagnare, opzionale)"
+          ],
+          "istruzioni": [
+            "In una pentola capiente, scalda un filo d'olio e soffriggi la cipolla e l'aglio fino a doratura.",
+            "Aggiungi la pasta di curry e cuoci per 1 minuto, mescolando.",
+            "Aggiungi i ceci e il latte di cocco. Porta a ebollizione e poi riduci la fiamma.",
+            "Lascia sobbollire per 10 minuti, poi aggiungi gli spinaci e cuoci finché non appassiscono.",
+            "Regola di sale e servi caldo, eventualmente con riso basmati."
+          ]
+        }
+      ],
+      "spuntini": [
+        {
+          "nome": "Yogurt Greco con Noci e Miele",
+          "descrizione": "Uno spuntino semplice e veloce, ricco di proteine e grassi sani.",
+          "ingredienti": [
+            "150g yogurt greco 0% grassi",
+            "30g noci",
+            "1 cucchiaino di miele (o sciroppo d'agave)"
+          ],
+          "istruzioni": [
+            "Metti lo yogurt greco in una ciotola.",
+            "Aggiungi le noci tritate grossolanamente e un filo di miele."
+          ]
+        },
+        {
+          "nome": "Uova Sode e Avocado",
+          "descrizione": "Uno spuntino salato e saziante, con proteine e grassi salutari.",
+          "ingredienti": [
+            "2 uova sode",
+            "1/2 avocado maturo",
+            "Pizzico di sale e pepe"
+          ],
+          "istruzioni": [
+            "Sbuccia e taglia a metà le uova sode.",
+            "Taglia l'avocado a fettine o cubetti.",
+            "Disponi le uova e l'avocado su un piatto. Condisci con sale e pepe."
+          ]
+        },
+        {
+          "nome": "Bastoncini di Sedano e Burro d'Arachidi",
+          "descrizione": "Uno spuntino croccante e proteico, facile da preparare.",
+          "ingredienti": [
+            "2 gambi di sedano",
+            "2 cucchiai di burro d'arachidi naturale"
+          ],
+          "istruzioni": [
+            "Lava e taglia il sedano a bastoncini.",
+            "Spalma il burro d'arachidi su ogni bastoncino di sedano."
+          ]
+        },
+        {
+          "nome": "Mela con Burro di Mandorle",
+          "descrizione": "Uno spuntino dolce e nutriente, ideale per placare la fame.",
+          "ingredienti": [
+            "1 mela media",
+            "2 cucchiai di burro di mandorle naturale"
+          ],
+          "istruzioni": [
+            "Lava e affetta la mela.",
+            "Spalma il burro di mandorle su ogni fetta di mela."
+          ]
+        },
+        {
+          "nome": "Gallette di Riso con Salmone Affumicato e Cetriolo",
+          "descrizione": "Uno spuntino salato e leggero, ricco di omega-3.",
+          "ingredienti": [
+            "2 gallette di riso integrali",
+            "50g salmone affumicato",
+            "Qualche fetta di cetriolo",
+            "Annetto (opzionale)"
+          ],
+          "istruzioni": [
+            "Distribuisci il salmone affumicato sulle gallette di riso.",
+            "Aggiungi le fette di cetriolo e, se desideri, un po' di aneto fresco."
+          ]
+        },
+        {
+          "nome": "Mix di Frutta Secca e Semi",
+          "descrizione": "Uno spuntino energetico e salutare, perfetto per una ricarica veloce.",
+          "ingredienti": [
+            "30g mix di frutta secca (es. mandorle, noci, anacardi)",
+            "10g semi (es. girasole, zucca)"
+          ],
+          "istruzioni": [
+            "Mescola semplicemente la frutta secca e i semi in una piccola ciotola o sacchetto per uno spuntino on-the-go."
+          ]
+        }
+      ]
+    }
+  }
+  
