@@ -37,20 +37,20 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.dark,
           primary: const Color.fromARGB(255, 170, 46, 39), // Colore primario per i widget
           onPrimary: Colors.black, // Colore del testo/icone sui widget primari
-          secondary: const Color.fromARGB(124, 236, 15, 3), // Colore secondario, simile all'accento
+          secondary: const Color.fromARGB(189, 247, 15, 2), // Colore secondario, simile all'accento
           onSecondary: Colors.black,
           // ignore: duplicate_ignore
           // ignore: deprecated_member_use
-          background: const Color(0xFF1A202C), // Sfondo
+          background: const Color.fromARGB(255, 0, 1, 4), // Sfondo
           onBackground: Colors.white, // Colore testo su sfondo
-          surface: const Color(0xFF2D3748), // Superfici come card, dialoghi
+          surface: const Color.fromARGB(255, 0, 0, 0), // Superfici come card, dialoghi
           onSurface: Colors.white70, // Testo su superfici
         ),
 
         // Tema per i campi di input (TextFormField)
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
-          fillColor: const Color(0xFF2D3748), // Sfondo più chiaro per i campi input
+          fillColor: const Color.fromARGB(255, 82, 82, 83), // Sfondo più chiaro per i campi input
           labelStyle: const TextStyle(color: Colors.white70), // Colore etichetta
           hintStyle: TextStyle(color: Colors.grey[400]), // Colore testo suggerito
           border: OutlineInputBorder(
@@ -76,8 +76,8 @@ class MyApp extends StatelessWidget {
         // Tema per i bottoni elevati (ElevatedButton)
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            backgroundColor: const Color.fromARGB(255, 170, 46, 39), // Colore di accento per i bottoni
-            foregroundColor: Colors.black, // Testo nero sui bottoni verdi
+            backgroundColor: const Color.fromARGB(255, 240, 14, 2), // Colore di accento per i bottoni
+            foregroundColor: const Color.fromARGB(255, 253, 253, 253), // Testo biaco su button rosso
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12), // Bordi arrotondati
             ),

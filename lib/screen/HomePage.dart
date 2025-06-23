@@ -1,4 +1,5 @@
 import 'package:be_better_u/screen/UserData.dart';
+import 'AuthPage.dart';// Importa la pagina di login
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:be_better_u/screen/FoodAdvice.dart'; // Importa la pagina FoodAdvice
@@ -164,8 +165,12 @@ class _HomePageState extends State<HomePage> {
               icon: Icons.logout,
               text: 'Esci',
               onTap: () async {
-                Navigator.pop(context); // Chiude il drawer
-                await FirebaseAuth.instance.signOut(); // Esegue il logout
+              Navigator.pop(context); // Chiude il drawer
+              await FirebaseAuth.instance.signOut(); // Esegue il logout
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const AuthPage()),
+                (Route<dynamic> route) => false, // Rimuove tutte le route precedenti
+              );
               },
             ),
           ],
@@ -288,111 +293,6 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-// Classe per una pagina di login di esempio.
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Accedi o Registrati'),
-        backgroundColor: const Color(0xFF1a2b3c),
-        foregroundColor: Colors.white,
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xFF1a2b3c), Color(0xFF2c3e50)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-        ),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Benvenuto in APTrainer!',
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Per continuare, accedi o registrati.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white70,
-                  ),
-                ),
-                const SizedBox(height: 40),
-                ElevatedButton(
-                  onPressed: () async {
-                    // Logica di esempio per l'accesso anonimo (solo per test)
-                    try {
-                      await FirebaseAuth.instance.signInAnonymously();
-                      // Dopo il login, StreamBuilder in MyApp reindirizzerà a HomePage.
-                    } on FirebaseAuthException catch (e) {
-                      if (e.code == 'operation-not-allowed') {
-                        print('Anonymous auth hasn\'t been enabled for this project.');
-                      }
-                      print(e.message);
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF5A67D8), // Blu-viola
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    elevation: 5,
-                    shadowColor: Colors.black.withOpacity(0.4),
-                  ),
-                  child: const Text(
-                    'Accedi come Ospite (Demo)',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                // Qui potresti aggiungere campi per email/password e pulsanti di login/registrazione reali.
-                TextButton(
-                  onPressed: () {
-                    // TODO: Naviga alla pagina di registrazione o apri un dialogo
-                  },
-                  child: const Text(
-                    'Non hai un account? Registrati',
-                    style: TextStyle(
-                      color: Colors.white70,
-                      decoration: TextDecoration.underline,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// Codice per una semplice app Flutter che utilizza HomePage.
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); // Inizializza Firebase
-  runApp(const MyApp());
-}
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -464,7 +364,7 @@ class MyApp extends StatelessWidget {
             return const HomePage(); // Mostra la HomePage
           } else {
             // Nessun utente loggato, mostra la LoginPage
-            return const LoginPage();
+            return const AuthPage();
           }
         },
       ),

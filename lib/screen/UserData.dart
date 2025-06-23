@@ -16,6 +16,13 @@ class _UserDataSectionState extends State<UserDataSection> {
   final TextEditingController _heightController = TextEditingController();
   final TextEditingController _weightController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
+  // Nuovi controller per le misurazioni dei gruppi muscolari
+  final TextEditingController _armsController = TextEditingController();
+  final TextEditingController _legsController = TextEditingController();
+  final TextEditingController _chestController = TextEditingController();
+  final TextEditingController _calvesController = TextEditingController();
+  final TextEditingController _shouldersController = TextEditingController();
+  final TextEditingController _waistController = TextEditingController();
 
   @override
   void initState() {
@@ -31,10 +38,17 @@ class _UserDataSectionState extends State<UserDataSection> {
     _heightController.dispose();
     _weightController.dispose();
     _ageController.dispose();
+    // Dispone i nuovi controller per i gruppi muscolari
+    _armsController.dispose();
+    _legsController.dispose();
+    _chestController.dispose();
+    _calvesController.dispose();
+    _shouldersController.dispose();
+    _waistController.dispose();
     super.dispose();
   }
 
-  // Carica i dati personali (altezza, peso, età, nome, cognome) dell'utente da Firestore.
+  // Carica i dati personali (altezza, peso, età, nome, cognome e misurazioni muscolari) dell'utente da Firestore.
   Future<void> _loadUserPersonalData() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
@@ -44,6 +58,12 @@ class _UserDataSectionState extends State<UserDataSection> {
       _heightController.clear();
       _weightController.clear();
       _ageController.clear();
+      _armsController.clear();
+      _legsController.clear();
+      _chestController.clear();
+      _calvesController.clear();
+      _shouldersController.clear();
+      _waistController.clear();
       return;
     }
 
@@ -63,6 +83,13 @@ class _UserDataSectionState extends State<UserDataSection> {
             _heightController.text = (data['height'] ?? '').toString();
             _weightController.text = (data['weight'] ?? '').toString();
             _ageController.text = (data['age'] ?? '').toString();
+            // Carica i nuovi dati dei gruppi muscolari
+            _armsController.text = (data['arms'] ?? '').toString();
+            _legsController.text = (data['legs'] ?? '').toString();
+            _chestController.text = (data['chest'] ?? '').toString();
+            _calvesController.text = (data['calves'] ?? '').toString();
+            _shouldersController.text = (data['shoulders'] ?? '').toString();
+            _waistController.text = (data['waist'] ?? '').toString();
           });
         }
       }
@@ -76,7 +103,7 @@ class _UserDataSectionState extends State<UserDataSection> {
     }
   }
 
-  // Salva i dati personali (altezza, peso, età, nome, cognome) dell'utente su Firestore.
+  // Salva i dati personali (altezza, peso, età, nome, cognome e misurazioni muscolari) dell'utente su Firestore.
   Future<void> _saveUserPersonalData() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user == null) {
@@ -94,6 +121,13 @@ class _UserDataSectionState extends State<UserDataSection> {
       final int? age = int.tryParse(_ageController.text);
       final String firstName = _firstNameController.text.trim();
       final String lastName = _lastNameController.text.trim();
+      // Nuovi dati dei gruppi muscolari
+      final double? arms = double.tryParse(_armsController.text);
+      final double? legs = double.tryParse(_legsController.text);
+      final double? chest = double.tryParse(_chestController.text);
+      final double? calves = double.tryParse(_calvesController.text);
+      final double? shoulders = double.tryParse(_shouldersController.text);
+      final double? waist = double.tryParse(_waistController.text);
 
 
       await FirebaseFirestore.instance.collection('users').doc(user.uid).set(
@@ -103,6 +137,12 @@ class _UserDataSectionState extends State<UserDataSection> {
           'height': height,
           'weight': weight,
           'age': age,
+          'arms': arms,
+          'legs': legs,
+          'chest': chest,
+          'calves': calves,
+          'shoulders': shoulders,
+          'waist': waist,
           'last_updated': FieldValue.serverTimestamp(), // Aggiunge un timestamp
         },
         SetOptions(merge: true), // Usa merge per non sovrascrivere altri campi esistenti
@@ -136,7 +176,7 @@ class _UserDataSectionState extends State<UserDataSection> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'I Tuoi Dati',
+              'I Tuoi Dati Personali',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -177,6 +217,57 @@ class _UserDataSectionState extends State<UserDataSection> {
               labelText: 'Età (anni)',
               keyboardType: TextInputType.number,
               icon: Icons.calendar_today,
+            ),
+            const SizedBox(height: 30),
+            const Text(
+              'Misurazioni Gruppi Muscolari (cm)',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 20),
+            _buildInputField(
+              controller: _armsController,
+              labelText: 'Braccia',
+              keyboardType: TextInputType.number,
+              icon: Icons.fitness_center,
+            ),
+            const SizedBox(height: 15),
+            _buildInputField(
+              controller: _legsController,
+              labelText: 'Gambe',
+              keyboardType: TextInputType.number,
+              icon: Icons.accessibility_new,
+            ),
+            const SizedBox(height: 15),
+            _buildInputField(
+              controller: _chestController,
+              labelText: 'Torace',
+              keyboardType: TextInputType.number,
+              icon: Icons.accessibility,
+            ),
+            const SizedBox(height: 15),
+            _buildInputField(
+              controller: _calvesController,
+              labelText: 'Polpacci',
+              keyboardType: TextInputType.number,
+              icon: Icons.run_circle,
+            ),
+            const SizedBox(height: 15),
+            _buildInputField(
+              controller: _shouldersController,
+              labelText: 'Spalle',
+              keyboardType: TextInputType.number,
+              icon: Icons.accessibility,
+            ),
+            const SizedBox(height: 15),
+            _buildInputField(
+              controller: _waistController,
+              labelText: 'Vita',
+              keyboardType: TextInputType.number,
+              icon: Icons.accessibility,
             ),
             const SizedBox(height: 30),
             Center(

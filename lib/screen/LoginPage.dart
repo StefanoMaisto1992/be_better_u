@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:be_better_u/auth.dart';
-import 'package:firebase_auth/firebase_auth.dart'; 
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   final VoidCallback onRegisterTapped;
@@ -16,12 +16,14 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-   final Auth _auth = Auth();
+  final Auth _auth = Auth();
 
-   void _login() async { // Reso asincrono per poter usare await
+  void _login() async {
+    // Reso asincrono per poter usare await
     if (_formKey.currentState!.validate()) {
       // Puoi rimuovere questa print in produzione
-      print('Login con: Email: ${_emailController.text}, Password: ${_passwordController.text}');
+      print(
+          'Login con: Email: ${_emailController.text}, Password: ${_passwordController.text}');
 
       try {
         await _auth.signInWithMailAndPwd(
@@ -29,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
           password: _passwordController.text,
         );
         // Se il login ha successo, lo StreamBuilder in main.dart gestirà la navigazione
-         if (mounted) {
+        if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Accesso effettuato con successo!')),
           );
@@ -62,7 +64,8 @@ class _LoginPageState extends State<LoginPage> {
         // Cattura qualsiasi altro errore inatteso
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Si è verificato un errore inaspettato: $e')),
+            SnackBar(
+                content: Text('Si è verificato un errore inaspettato: $e')),
           );
         }
       }
@@ -79,82 +82,91 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Accedi'),
-        centerTitle: true,
-        backgroundColor: Colors.grey[850], // Mantenuto il colore del tema
-      ),
-      body: Center(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Icon(
-                  Icons.fitness_center,
-                  size: 100,
-                  color: const Color.fromARGB(255, 233, 29, 29),
-                ),
-                const SizedBox(height: 48),
-
-                TextFormField(
-                  controller: _emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: const InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Inserisci la tua email',
-                    prefixIcon: Icon(Icons.email),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Per favore, inserisci la tua email';
-                    }
-                    if (!value.contains('@')) {
-                      return 'Per favore, inserisci un\'email valida';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 16),
-
-                TextFormField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: const InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Inserisci la tua password',
-                    prefixIcon: Icon(Icons.lock),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Per favor, inserisci la tua password';
-                    }
-                    if (value.length < 6) {
-                      return 'La password deve essere di almeno 6 caratteri';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 24),
-
-                ElevatedButton(
-                  onPressed: _login,
-                  child: const Text('Accedi'),
-                ),
-                const SizedBox(height: 16),
-
-                TextButton(
-                  onPressed: widget.onRegisterTapped,
-                  child: const Text('Non hai un account? Registrati!'),
-                ),
+        appBar: AppBar(
+          title: const Text('Accedi'),
+          centerTitle: true,
+          backgroundColor: const Color.fromARGB(
+              255, 5, 5, 5), // Mantenuto il colore del tema
+        ),
+        body: Container(
+          // Wrap the entire body with a Container
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(255, 220, 220, 220), // Light Grey
+                Color.fromARGB(255, 0, 0, 0), // Black
               ],
+              begin: Alignment.topCenter, // Adjust gradient direction as needed
+              end: Alignment.bottomCenter,
             ),
           ),
-        ),
-      ),
-    );
+          child: Center(
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(24.0),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Icon(
+                      Icons.fitness_center,
+                      size: 100,
+                      color: const Color.fromARGB(255, 233, 29, 29),
+                    ),
+                    const SizedBox(height: 48),
+                    TextFormField(
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      decoration: const InputDecoration(
+                        labelText: 'Email',
+                        hintText: 'Inserisci la tua email',
+                        prefixIcon: Icon(Icons.email),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Per favore, inserisci la tua email';
+                        }
+                        if (!value.contains('@')) {
+                          return 'Per favore, inserisci un\'email valida';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    TextFormField(
+                      controller: _passwordController,
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                        labelText: 'Password',
+                        hintText: 'Inserisci la tua password',
+                        prefixIcon: Icon(Icons.lock),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Per favor, inserisci la tua password';
+                        }
+                        if (value.length < 6) {
+                          return 'La password deve essere di almeno 6 caratteri';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 24),
+                    ElevatedButton(
+                      onPressed: _login,
+                      child: const Text('Accedi'),
+                    ),
+                    const SizedBox(height: 16),
+                    TextButton(
+                      onPressed: widget.onRegisterTapped,
+                      child: const Text('Non hai un account? Registrati!'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ));
   }
 }
