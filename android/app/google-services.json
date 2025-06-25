@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "840977980240",
+    "project_id": "be-better-u",
+    "storage_bucket": "be-better-u.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840977980240:android:382e63eff752c7f3efea55",
+        "android_client_info": {
+          "package_name": "com.example.be_better_u"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlMZL-o3RklF89u4_rRHtanoQtMUjQB2A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
