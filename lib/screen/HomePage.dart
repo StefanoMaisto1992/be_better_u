@@ -3,6 +3,7 @@ import 'AuthPage.dart';// Importa la pagina di login
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:be_better_u/screen/FoodAdvice.dart'; // Importa la pagina FoodAdvice
+import 'package:be_better_u/screen/MentalCoaching.dart'; // Importa la pagina MentalCoaching
 import 'package:firebase_auth/firebase_auth.dart'; // Importa Firebase Auth
 import 'package:firebase_core/firebase_core.dart'; // Importa Firebase Core per l'inizializzazione
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -139,6 +140,17 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.pop(context);
                 // TODO: Naviga alla pagina "Prodotti consigliati"
+              },
+            ),
+            _buildDrawerItem(
+              icon: Icons.psychology,
+              text: 'Mental coaching',
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MentalCoaching()),
+                );
               },
             ),
             _buildDrawerItem(

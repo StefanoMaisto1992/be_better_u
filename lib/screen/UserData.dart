@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class UserDataSection extends StatefulWidget {
   const UserDataSection({super.key});
@@ -228,39 +229,79 @@ class _UserDataSectionState extends State<UserDataSection> {
               ),
             ),
             const SizedBox(height: 20),
-            _buildInputField(
+            _buildCustonIconInputField(
               controller: _armsController,
               labelText: 'Braccia',
               keyboardType: TextInputType.number,
-              icon: Icons.fitness_center,
+              iconWidget: SvgPicture.asset(
+                'assets/icons/biceps.svg', // Il percorso al tuo file
+                width: 28, // Larghezza desiderata per l'icona
+                height: 28, // Altezza desiderata per l'icona
+                colorFilter: ColorFilter.mode(
+                  Colors.white70, // Colore dell'icona
+                  BlendMode.srcIn, // Modalità di fusione per applicare il colore
+                ),
+              ),
             ),
             const SizedBox(height: 15),
-            _buildInputField(
+            _buildCustonIconInputField(
               controller: _legsController,
               labelText: 'Gambe',
               keyboardType: TextInputType.number,
-              icon: Icons.accessibility_new,
+             iconWidget: SvgPicture.asset(
+                'assets/icons/gambe.svg', // Il percorso al tuo file
+                width: 28, // Larghezza desiderata per l'icona
+                height: 28, // Altezza desiderata per l'icona
+                colorFilter: ColorFilter.mode(
+                  Colors.white70, // Colore dell'icona
+                  BlendMode.srcIn, // Modalità di fusione per applicare il colore
+                ),
+              ),
             ),
             const SizedBox(height: 15),
-            _buildInputField(
+            _buildCustonIconInputField(
               controller: _chestController,
               labelText: 'Torace',
               keyboardType: TextInputType.number,
-              icon: Icons.accessibility,
+               iconWidget: SvgPicture.asset(
+                'assets/icons/chest.svg', // Il percorso al tuo file
+                width: 28, // Larghezza desiderata per l'icona
+                height: 28, // Altezza desiderata per l'icona
+                colorFilter: ColorFilter.mode(
+                  Colors.white70, // Colore dell'icona
+                  BlendMode.srcIn, // Modalità di fusione per applicare il colore
+                ),
+              ),
             ),
             const SizedBox(height: 15),
-            _buildInputField(
+            _buildCustonIconInputField(
               controller: _calvesController,
               labelText: 'Polpacci',
               keyboardType: TextInputType.number,
-              icon: Icons.run_circle,
+              iconWidget: SvgPicture.asset(
+                'assets/icons/polpacci.svg', // Il percorso al tuo file
+                width: 28, // Larghezza desiderata per l'icona
+                height: 28, // Altezza desiderata per l'icona
+                colorFilter: ColorFilter.mode(
+                  Colors.white70, // Colore dell'icona
+                  BlendMode.srcIn, // Modalità di fusione per applicare il colore
+                ),
+              ),
             ),
             const SizedBox(height: 15),
-            _buildInputField(
+            _buildCustonIconInputField(
               controller: _shouldersController,
               labelText: 'Spalle',
               keyboardType: TextInputType.number,
-              icon: Icons.accessibility,
+               iconWidget: SvgPicture.asset(
+                'assets/icons/shoulders.svg', // Il percorso al tuo file
+                width: 28, // Larghezza desiderata per l'icona
+                height: 28, // Altezza desiderata per l'icona
+                colorFilter: ColorFilter.mode(
+                  Colors.white70, // Colore dell'icona
+                  BlendMode.srcIn, // Modalità di fusione per applicare il colore
+                ),
+              ),
             ),
             const SizedBox(height: 15),
             _buildInputField(
@@ -336,6 +377,44 @@ class _UserDataSectionState extends State<UserDataSection> {
   }
 }
 
+Widget _buildCustonIconInputField({
+  required TextEditingController controller,
+  required String labelText,
+  required TextInputType keyboardType,
+  required Widget iconWidget,
+}) {
+  return TextField(
+    controller: controller,
+    keyboardType: keyboardType,
+    style: const TextStyle(color: Colors.white),
+    decoration: InputDecoration(
+      labelText: labelText,
+      labelStyle: TextStyle(color: Colors.white.withOpacity(0.8)),
+      prefixIcon: iconWidget, // Ora usiamo direttamente il widget passato qui
+      filled: true,
+      fillColor: Colors.white.withOpacity(0.1),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: BorderSide(color: Colors.white.withOpacity(0.3), width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide:
+            const BorderSide(color: Color.fromARGB(255, 255, 65, 48), width: 2),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: const BorderSide(color: Colors.red, width: 1),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(15),
+        borderSide: const BorderSide(color: Colors.red, width: 2),
+      ),
+    ),
+  );
+}
+
+
 // NUOVA PAGINA: UserDataPage per ospitare UserDataSection
 class UserDataPage extends StatelessWidget {
   const UserDataPage({super.key});
@@ -358,9 +437,9 @@ class UserDataPage extends StatelessWidget {
         // Sfondo degradè per la pagina, simile a quello della LoginPage o del tema
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color.fromARGB(255, 79, 79, 79), Color.fromARGB(255, 0, 3, 6)],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            colors: [Color.fromARGB(255, 0, 0, 0), Colors.white70],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
         ),
         child: const Center(

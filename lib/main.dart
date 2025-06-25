@@ -102,7 +102,7 @@ class MyApp extends StatelessWidget {
 
         // Tema per la barra dell'app (AppBar)
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFF1A202C), // Sfondo della barra dell'app come lo sfondo principale
+          backgroundColor: Color.fromARGB(255, 0, 0, 0), // Sfondo della barra dell'app come lo sfondo principale
           elevation: 0, // Nessuna ombra per un look piatto
           centerTitle: true,
           titleTextStyle: TextStyle(
