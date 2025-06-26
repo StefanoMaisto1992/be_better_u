@@ -1,12 +1,12 @@
 import 'package:be_better_u/screen/UserData.dart';
-import 'AuthPage.dart';// Importa la pagina di login
+import 'AuthPage.dart'; // Importa la pagina di login
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:be_better_u/screen/FoodAdvice.dart'; // Importa la pagina FoodAdvice
 import 'package:be_better_u/screen/MentalCoaching.dart'; // Importa la pagina MentalCoaching
 import 'package:firebase_auth/firebase_auth.dart'; // Importa Firebase Auth
-import 'package:firebase_core/firebase_core.dart'; // Importa Firebase Core per l'inizializzazione
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:be_better_u/screen/Settings/Settings.dart'; // Importa la pagina delle impostazioni
 
 // HomePage è uno StatefulWidget perché lo sfondo cambierà dinamicamente.
 class HomePage extends StatefulWidget {
@@ -28,14 +28,15 @@ class _HomePageState extends State<HomePage> {
   ];
 
   late String _currentBackgroundImage;
-   String _userDisplayName = 'Utente'; // Variabile per il nome/email dell'utente
+  String _userDisplayName = 'Utente'; // Variabile per il nome/email dell'utente
 
   @override
   void initState() {
     super.initState();
     // Seleziona un'immagine di sfondo casuale all'inizializzazione dello stato.
-    _currentBackgroundImage = _backgroundImages[Random().nextInt(_backgroundImages.length)];
-     _updatUserInfo(); // Carica le informazioni dell'utente all'inizio
+    _currentBackgroundImage =
+        _backgroundImages[Random().nextInt(_backgroundImages.length)];
+    _updatUserInfo(); // Carica le informazioni dell'utente all'inizio
   }
 
   void _updatUserInfo() async {
@@ -44,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     if (user == null) {
       return; // Se l'utente non è loggato, non fare nulla.
     } else {
-        final docSnapshot = await FirebaseFirestore.instance
+      final docSnapshot = await FirebaseFirestore.instance
           .collection('users')
           .doc(user.uid)
           .get();
@@ -53,7 +54,9 @@ class _HomePageState extends State<HomePage> {
           // Usa il firstname e lastname se disponibili, altrimenti usa l'email.
           // Se entrambi sono nulli, rimane "Utente".
           final data = docSnapshot.data();
-          if (data != null && data['firstName'] != null && data['lastName'] != null) {
+          if (data != null &&
+              data['firstName'] != null &&
+              data['lastName'] != null) {
             _userDisplayName = '${data['firstName']} ${data['lastName']}';
           } else {
             _userDisplayName = user.email ?? 'Utente';
@@ -85,13 +88,15 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
       ),
       drawer: Drawer(
-        backgroundColor: const Color.fromARGB(255, 0, 2, 4), // Colore di sfondo scuro come il sito di riferimento
+        backgroundColor: const Color.fromARGB(
+            255, 0, 2, 4), // Colore di sfondo scuro come il sito di riferimento
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeader(
               decoration: const BoxDecoration(
-                color: Color.fromARGB(255, 0, 0, 0), // Colore più scuro per l'header
+                color: Color.fromARGB(
+                    255, 0, 0, 0), // Colore più scuro per l'header
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,7 +105,8 @@ class _HomePageState extends State<HomePage> {
                   const CircleAvatar(
                     radius: 30,
                     backgroundColor: Colors.white,
-                    child: Icon(Icons.person, size: 30, color: Color(0xFF1a2b3c)),
+                    child:
+                        Icon(Icons.person, size: 30, color: Color(0xFF1a2b3c)),
                   ),
                   const SizedBox(height: 10),
                   Text(
@@ -115,7 +121,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             // Voci del menu.
-              _buildDrawerItem(
+            _buildDrawerItem(
               icon: Icons.person, // Icona aggiornata
               text: 'I Tuoi Dati',
               onTap: () {
@@ -149,7 +155,8 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MentalCoaching()),
+                  MaterialPageRoute(
+                      builder: (context) => const MentalCoaching()),
                 );
               },
             ),
@@ -169,20 +176,25 @@ class _HomePageState extends State<HomePage> {
               text: 'Impostazioni',
               onTap: () {
                 Navigator.pop(context);
-                // TODO: Naviga alla pagina "Impostazioni"
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SettingsPage()),
+                );
               },
             ),
-            const Divider(color: Colors.white54), // Divisore per separare le voci
+            const Divider(
+                color: Colors.white54), // Divisore per separare le voci
             _buildDrawerItem(
               icon: Icons.logout,
               text: 'Esci',
               onTap: () async {
-              Navigator.pop(context); // Chiude il drawer
-              await FirebaseAuth.instance.signOut(); // Esegue il logout
-              Navigator.of(context).pushAndRemoveUntil(
-                MaterialPageRoute(builder: (context) => const AuthPage()),
-                (Route<dynamic> route) => false, // Rimuove tutte le route precedenti
-              );
+                Navigator.pop(context); // Chiude il drawer
+                await FirebaseAuth.instance.signOut(); // Esegue il logout
+                Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const AuthPage()),
+                  (Route<dynamic> route) =>
+                      false, // Rimuove tutte le route precedenti
+                );
               },
             ),
           ],
@@ -197,13 +209,15 @@ class _HomePageState extends State<HomePage> {
               return FadeTransition(opacity: animation, child: child);
             },
             child: Container(
-              key: ValueKey<String>(_currentBackgroundImage), // Chiave per permettere ad AnimatedSwitcher di rilevare il cambio
+              key: ValueKey<String>(
+                  _currentBackgroundImage), // Chiave per permettere ad AnimatedSwitcher di rilevare il cambio
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(_currentBackgroundImage),
                   fit: BoxFit.cover,
                   colorFilter: ColorFilter.mode(
-                    Colors.black.withOpacity(0.5), // Sovrapposizione scura per rendere il testo leggibile
+                    Colors.black.withOpacity(
+                        0.5), // Sovrapposizione scura per rendere il testo leggibile
                     BlendMode.darken,
                   ),
                 ),
@@ -254,12 +268,14 @@ class _HomePageState extends State<HomePage> {
                     // Puoi aggiungere qui la logica per iniziare un workout o navigare
                     // Per la dimostrazione, cambia lo sfondo per mostrare la dinamicità
                     setState(() {
-                      _currentBackgroundImage = _backgroundImages[Random().nextInt(_backgroundImages.length)];
+                      _currentBackgroundImage = _backgroundImages[
+                          Random().nextInt(_backgroundImages.length)];
                     });
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 255, 1, 1),
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 15),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -300,7 +316,8 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       onTap: onTap,
-      hoverColor: const Color.fromARGB(255, 255, 255, 255), // Colore al passaggio del mouse/tocco
+      hoverColor: const Color.fromARGB(
+          255, 255, 255, 255),
     );
   }
 }
@@ -312,44 +329,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'APTrainer App',
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey, // Colore primario generale
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-        // Font generale per l'app, puoi importare Google Fonts come 'Poppins' o 'Open Sans'
-        // se vuoi replicare più fedelmente lo stile del sito.
-        fontFamily: 'Roboto', // Sostituisci con il font desiderato
-        scaffoldBackgroundColor: Colors.black, // Background nero per il contorno
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          titleTextStyle: TextStyle(
-            color: Colors.white,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: Colors.white),
-          bodyMedium: TextStyle(color: Colors.white70),
-          headlineSmall: TextStyle(color: Colors.white),
-          headlineMedium: TextStyle(color: Colors.white),
-        ),
-        // Stile per i pulsanti (simile al sito di riferimento)
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.white, backgroundColor: const Color(0xFF5A67D8), // Blu-viola
-            textStyle: const TextStyle(
-              fontWeight: FontWeight.bold,
-            ),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-          ),
-        ),
-      ),
       // Qui gestiamo la logica di routing condizionale
       home: StreamBuilder<User?>(
-        stream: FirebaseAuth.instance.authStateChanges(), // Ascolta i cambiamenti dello stato di autenticazione
+        stream: FirebaseAuth.instance
+            .authStateChanges(), // Ascolta i cambiamenti dello stato di autenticazione
         builder: (context, snapshot) {
           // Se la connessione è in attesa (sta ancora controllando lo stato di autenticazione)
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -366,7 +349,8 @@ class MyApp extends StatelessWidget {
           if (snapshot.hasError) {
             return const Scaffold(
               body: Center(
-                child: Text('Si è verificato un errore di autenticazione.', style: TextStyle(color: Colors.white)),
+                child: Text('Si è verificato un errore di autenticazione.',
+                    style: TextStyle(color: Colors.white)),
               ),
               backgroundColor: Color(0xFF1a2b3c),
             );
